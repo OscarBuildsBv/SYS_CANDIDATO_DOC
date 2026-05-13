@@ -1,0 +1,18 @@
+@startuml
+
+actor Cliente
+participant Frontend
+participant "API Gateway" as API
+participant "Citas Service" as Citas
+database "DB Citas" as DB
+
+Cliente -> Frontend : Agenda cita
+Frontend -> API : POST /citas
+API -> Citas : Registrar cita
+Citas -> DB : Guardar cita
+DB --> Citas : OK
+Citas --> API : Cita confirmada
+API --> Frontend : Mostrar comprobante
+Frontend --> Cliente : Cita agendada
+
+@enduml

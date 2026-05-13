@@ -1,0 +1,18 @@
+@startuml
+
+actor Usuario
+participant Frontend
+participant "API Gateway" as API
+participant "Consultas Service" as Consultas
+database "DB Consultas" as DB
+
+Usuario -> Frontend : Llena formulario
+Frontend -> API : POST /consultas
+API -> Consultas : Registrar consulta
+Consultas -> DB : Guardar consulta
+DB --> Consultas : OK
+Consultas --> API : Consulta registrada
+API --> Frontend : Respuesta exitosa
+Frontend --> Usuario : Confirmación
+
+@enduml

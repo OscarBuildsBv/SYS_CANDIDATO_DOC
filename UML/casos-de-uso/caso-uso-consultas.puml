@@ -1,0 +1,23 @@
+@startuml
+
+left to right direction
+
+actor Usuario
+
+rectangle "Sistema Legal" {
+
+  usecase "Solicitar Consulta" as UC1
+  usecase "Describir Caso Legal" as UC2
+  usecase "Seleccionar Área Legal" as UC3
+  usecase "Enviar Solicitud" as UC4
+  usecase "Recibir Confirmación" as UC5
+
+}
+
+Usuario -- UC1
+Usuario -- UC2
+Usuario -- UC3
+Usuario -- UC4
+Usuario -- UC5
+
+@enduml
