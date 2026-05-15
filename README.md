@@ -5,5 +5,5 @@
 ´´´plantuml
 
 @startuml
-!include ./casos-de-uso/caso-uso-area-cliente.puml
+!include ./UML/casos-de-uso/caso-uso-area-cliente.puml
 @enduml
