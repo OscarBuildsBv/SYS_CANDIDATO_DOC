@@ -1,49 +1,53 @@
 @startuml
 
-title Caso de Uso - Publicación Web del Abogado
+skinparam backgroundColor #1E1E1E
+skinparam packageStyle folder
+skinparam shadowing false
+skinparam actorStyle awesome
 
-left to right direction
-
-skinparam backgroundColor #F4F6F7
-skinparam shadowing true
-skinparam roundcorner 15
-
-skinparam actor {
-    BackgroundColor #AED6F1
-    BorderColor #1B4F72
-    FontColor #154360
+skinparam package {
+    BackgroundColor #1E1E1E
+    BorderColor #D4A017
+    RoundCorner 10
 }
 
 skinparam usecase {
-    BackgroundColor #D5F5E3
-    BorderColor #239B56
-    FontColor #145A32
-    ArrowColor #2E4053
+    BackgroundColor #2B2B2B
+    BorderColor #D4A017
+    FontColor #F5C542
+    ArrowColor #D4A017
 }
 
 skinparam rectangle {
-    BackgroundColor #EBF5FB
-    BorderColor #5DADE2
+    BackgroundColor #1E1E1E
+    BorderColor #D4A017
+    RoundCorner 10
 }
 
-actor "Abogado" as Abogado
+skinparam ArrowColor #D4A017
+skinparam defaultFontColor #F5C542
+
+left to right direction
+
+actor Abogado
 
 rectangle "Sistema Web de Publicaciones" {
 
-    usecase "Iniciar sesión" as UC1 #D6EAF8
-    usecase "Crear publicación" as UC2 #ABEBC6
-    usecase "Escribir texto" as UC3 #F9E79F
-    usecase "Subir imagen" as UC4 #F5CBA7
-    usecase "Vista previa" as UC5 #D2B4DE
-    usecase "Publicar contenido" as UC6 #82E0AA
-    usecase "Editar publicación" as UC7 #FAD7A0
-    usecase "Eliminar publicación" as UC8 #F5B7B1
+  usecase "Iniciar Sesión" as UC1
+  usecase "Crear Publicación" as UC2
+  usecase "Escribir Texto" as UC3
+  usecase "Subir Imagen" as UC4
+  usecase "Visualizar Vista Previa" as UC5
+  usecase "Publicar Contenido" as UC6
+  usecase "Editar Publicación" as UC7
+  usecase "Eliminar Publicación" as UC8
+
 }
 
-Abogado --> UC1
-Abogado --> UC2
-Abogado --> UC7
-Abogado --> UC8
+Abogado -- UC1
+Abogado -- UC2
+Abogado -- UC7
+Abogado -- UC8
 
 UC2 .> UC3 : <<include>>
 UC2 .> UC4 : <<include>>
