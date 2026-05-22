@@ -41,4 +41,12 @@ Usuario -- UC3
 Usuario -- UC4
 Usuario -- UC5
 
+legend right
+  |<#D4A017> Área Legal |
+  |<#F5C542> Solicitud |
+  |UC1 - UC5| Etapas del Proceso |
+  |-- Consulta especializada |
+  |-- Confirmación de área legal |
+endlegend
+
 @enduml

@@ -40,4 +40,12 @@ Cliente -- UC3
 Cliente -- UC4
 Cliente -- UC5
 
+legend right
+  |<#D4A017> Proceso |
+  |<#F5C542> Interacción Cliente |
+  |UC1 - UC5| Pasos del Sistema |
+  |-- Flujo completo de agendamiento |
+  |-- Confirmación automática |
+endlegend
+
 @enduml

@@ -60,4 +60,12 @@ A --> UC9
 UC1 .> UC2 : <<include>>
 UC5 .> UC9 : <<include>>
 
+legend right
+  |<#D4A017> Actor Primario |
+  |<#F5C542> Casos de Uso |
+  |<#2B2B2B> Relación Include |
+  |-- Cliente: Usuario del sistema |
+  |-- Administrador: Gestor del sistema |
+endlegend
+
 @enduml
