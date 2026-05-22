@@ -1,0 +1,53 @@
+@startuml
+
+title Caso de Uso - Publicación Web del Abogado
+
+left to right direction
+
+skinparam backgroundColor #F4F6F7
+skinparam shadowing true
+skinparam roundcorner 15
+
+skinparam actor {
+    BackgroundColor #AED6F1
+    BorderColor #1B4F72
+    FontColor #154360
+}
+
+skinparam usecase {
+    BackgroundColor #D5F5E3
+    BorderColor #239B56
+    FontColor #145A32
+    ArrowColor #2E4053
+}
+
+skinparam rectangle {
+    BackgroundColor #EBF5FB
+    BorderColor #5DADE2
+}
+
+actor "Abogado" as Abogado
+
+rectangle "Sistema Web de Publicaciones" {
+
+    usecase "Iniciar sesión" as UC1 #D6EAF8
+    usecase "Crear publicación" as UC2 #ABEBC6
+    usecase "Escribir texto" as UC3 #F9E79F
+    usecase "Subir imagen" as UC4 #F5CBA7
+    usecase "Vista previa" as UC5 #D2B4DE
+    usecase "Publicar contenido" as UC6 #82E0AA
+    usecase "Editar publicación" as UC7 #FAD7A0
+    usecase "Eliminar publicación" as UC8 #F5B7B1
+}
+
+Abogado --> UC1
+Abogado --> UC2
+Abogado --> UC7
+Abogado --> UC8
+
+UC2 .> UC3 : <<include>>
+UC2 .> UC4 : <<include>>
+UC2 .> UC5 : <<include>>
+UC2 .> UC6 : <<include>>
+
+@enduml
