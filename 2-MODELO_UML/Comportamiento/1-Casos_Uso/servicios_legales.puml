@@ -59,5 +59,13 @@ Administrador --> UC6
 
 CMS --> UC7
 
+legend right
+  |<#D4A017> Actores del Sistema |
+  |<#F5C542> Funcionalidades |
+  |Visitante| Acceso público |
+  |Cliente| Acceso registrado |
+  |Administrador| Control total |
+  |CMS| Gestión de contenido |
+endlegend
+
 @enduml
-``
