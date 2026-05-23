@@ -1,9 +1,9 @@
-## hola como estas este es mi proyecto en uml realizado casos de uso- mi proyecto se llama : SYS-PROYECT-ABOGADO
+## SYS-PROYECT-ABOGADO
 
 ## "SYS-ABOGADO"
 
 ´´´plantuml
 
-@startuml
-!include ./UML/casos-de-uso/caso-uso-area-cliente.puml
-@enduml
+## CASO DE USO AREA_CLIENTE
+
+![Diagrama de Arquitectura](https://www.plantuml.com/plantuml/png/VLJRRjim37tNLn3PSuOcJNe9Yg2kUq4VXXRDEc10NrYBSONAKaT9AxPr3_kcVK9_RB9b1t6QDGO2WkSS7fEYVEmyiW-L5bvvJR1GpbE5iFYw62uk5v_FFcN3xEJg8ZkzkZEt-N1dEeFNFqm8kLPaF0cXQUd1Ms1LFdYGYgdmoXeXtACoJyXOmJqMZoNRO6HkjMNuC3ghdpN6KsHWIGl_GnCihPR4QwXxG6cVbIbXYThH6eA5jvnK-4pELYJULeLV0kBlPFjR9Cnoj6ppfvDiPxJVv6zQ-lOq6s8OxOZVwwR1KO7klwRZa_fvr_JS6jzcpwVvT39kiXcpVUwHaszl5D5rUuM-t_OIMopMG4bB3Dg_BIsIyw3TY06WWxnBPh9IHZdFA2qtK2P4Tow3TzPj45jfthgRv-3Ig48XWoEdNl-QEmEotXMEUaTbO6pAt-QZlkmBCP3pqJyfN808s9OyxfDpQrni4XcaBK95nblNoFIwQBSlMeHxjI5W-XQ8bRIkbKmsVQeGsq5s18MjUuaEU6zBb9t9z6qR3yfvomfrwgHG7hlwUttsDTkIiK864-WxDjH6vABkoR97tGht-y8BSlNjtJg0TBwjxg2lomeVKAkVs1jsRsg7ejws78R3UNDANRIxYYQhQBgAzbRHlX1P6nwaA1MDjU1Z7OzX1aT7oXGwI9hF8p1DmE4683ILP6JwP0c0bwDstUUGDMjxpQf2LXPU4fesVGuvEklgqT-w3cilz1nkI6DHBoPS9gD460wxJ-Kiga9TjHcCQrU_8_KkoWpgSx2ymIGZqvkBu_WNAlqF)
