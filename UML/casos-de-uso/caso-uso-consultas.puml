@@ -1,5 +1,4 @@
 @startuml
-
 skinparam backgroundColor #1E1E1E
 skinparam packageStyle folder
 skinparam shadowing false
@@ -17,10 +16,8 @@ skinparam usecase {
     FontColor #F5C542
     ArrowColor #D4A017
 }
-
 skinparam ArrowColor #D4A017
 skinparam defaultFontColor #F5C542
-
 left to right direction
 
 actor Usuario
