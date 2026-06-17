@@ -1,18 +1,79 @@
-## SYS-PROYECT-ABOGADO
+## SYS-PROJECT-ABOGADO
 
-´´´plantuml
+Descripción
 
-## CASO DE USO AREA_CLIENTE
+SYS-PROJECT-ABOGADO es un sistema web orientado a la gestión de servicios legales. Permite la administración de citas, consultas legales, publicaciones informativas y el seguimiento de casos entre clientes, abogados y administradores.
 
-![Diagrama de Arquitectura](https://www.plantuml.com/plantuml/png/VLJRRjim37tNLn3PSuOcJNe9Yg2kUq4VXXRDEc10NrYBSONAKaT9AxPr3_kcVK9_RB9b1t6QDGO2WkSS7fEYVEmyiW-L5bvvJR1GpbE5iFYw62uk5v_FFcN3xEJg8ZkzkZEt-N1dEeFNFqm8kLPaF0cXQUd1Ms1LFdYGYgdmoXeXtACoJyXOmJqMZoNRO6HkjMNuC3ghdpN6KsHWIGl_GnCihPR4QwXxG6cVbIbXYThH6eA5jvnK-4pELYJULeLV0kBlPFjR9Cnoj6ppfvDiPxJVv6zQ-lOq6s8OxOZVwwR1KO7klwRZa_fvr_JS6jzcpwVvT39kiXcpVUwHaszl5D5rUuM-t_OIMopMG4bB3Dg_BIsIyw3TY06WWxnBPh9IHZdFA2qtK2P4Tow3TzPj45jfthgRv-3Ig48XWoEdNl-QEmEotXMEUaTbO6pAt-QZlkmBCP3pqJyfN808s9OyxfDpQrni4XcaBK95nblNoFIwQBSlMeHxjI5W-XQ8bRIkbKmsVQeGsq5s18MjUuaEU6zBb9t9z6qR3yfvomfrwgHG7hlwUttsDTkIiK864-WxDjH6vABkoR97tGht-y8BSlNjtJg0TBwjxg2lomeVKAkVs1jsRsg7ejws78R3UNDANRIxYYQhQBgAzbRHlX1P6nwaA1MDjU1Z7OzX1aT7oXGwI9hF8p1DmE4683ILP6JwP0c0bwDstUUGDMjxpQf2LXPU4fesVGuvEklgqT-w3cilz1nkI6DHBoPS9gD460wxJ-Kiga9TjHcCQrU_8_KkoWpgSx2ymIGZqvkBu_WNAlqF)
+## Objetivo del proyecto
+Diseñar y documentar la arquitectura y el comportamiento del sistema mediante modelos C4 y diagramas UML utilizando PlantUML.
 
-## CASO DE USO CITAS
+## Integrantes del equipo
+ Brayan Oscar Roque Suaquita
+ Juan Diego Chambilla Serrano
+ Hermes Adan Chambilla Chambilla
+ Witmer Mamani Cahuana
 
-### Descripción
+## Tecnologías y herramientas
+ Java
+ Maven
+ PlantUML
+ Git
+ GitHub
+ IntelliJ IDEA
 
+## Estructura del proyecto
+ 1-MODELO_C4/ 
+ ├── Nivel_1_Contexto 
+ ├── Nivel_2_Contenedores 
+ └── Nivel_3_Componentes
+ 
+  
+ 2-MODELO_UML/
+ ├── Comportamiento
+ │   ├── Casos de Uso
+ │   ├── Secuencia
+ │   ├── Actividades
+ │   ├── Estado
+ │   ├── Tiempos
+ │   └── Comunicación
+ └── Estructural
+     ├── Clases
+     ├── Objetos
+     ├── Componentes
+     ├── Despliegue
+     ├── Paquetes
+     └── Perfil
 
-Este diagrama representa la arquitectura y relaciones principales del sistema modelado utilizando PlantUML.
+#### Diagramas de comportamiento
 
-´´´plantuml
+- Casos de uso
+- Secuencia
+- Actividades
+- Estado
+- Tiempos
+- Comunicación
 
-![](https://www.plantuml.com/plantuml/png/VP5HQXin48RVTOh1VGx4ZarVIaYoZI4FXL3Jla-ayLgDLcD6ManRvp0zGu-GYrLQYI3ZjYjOc9bF__mpkWaH9Ow3K-7P-ZqA3l24-haN7htfsB70k_bzFWsnJmJsj8dV7S6MdI5fgc67XW_Mzx155wYfe8uivHOUAF10wbmLVYf8tztVNPGQIsfPyn-NjvVpzrF-Sy75ay3yKhsqwcCWZU6VwekxVFwhlcOVQtQzwbRBnPIz5U73AVpIj3qlDqL3MnnTF1Tsj8qG6SJskmZ62kbesIirRH0wPyb7KYhdqVUEOBQn8TA0IHCw6p7CqgGAtiQUFNYhBGfiADZNttu66E1BDs-H3JdIElL9s9hq3YkqQA5xHxqL-CG6dJLeAdFLCXtxhPK1PR9IYMLBVBLXJFT_P8I7lV0J-aYLNAdyT7L8kBZ8Fa_3nMbuTHekcx389S_aJLcd0ZX-g6zn3O_2cWB3iQJB_g_X8TqMr3gl2gfQOP8Nc5IFy8Y10nXoK9TVYDHqxSPl33fDvYXoGW2p0Hoo4BzXTKzOsk0OUNZz5QtEGWalhjLD-es3-mC0)
+#### Diagramas estructurales
+
+- Clases
+- Objetos
+- Componentes
+- Despliegue
+- Paquetes
+- Perfil
+
+## Módulos del sistema
+
+- Gestión de citas
+- Consultas legales
+- Publicaciones
+- Área del cliente
+- Servicios legales
+
+## Flujo de trabajo
+
+El equipo utiliza Git y GitHub para gestionar los cambios mediante ramas de trabajo, commits y Pull Requests para la revisión y aprobación del código.
+
+## Diagramas
+Caso de uso: Área Cliente
+
