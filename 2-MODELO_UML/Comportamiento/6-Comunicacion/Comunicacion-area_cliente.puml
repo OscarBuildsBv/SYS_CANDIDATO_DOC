@@ -1,4 +1,6 @@
 @startuml
+allowmixing
+
 title Comunicación - Área Cliente
 
 object Cliente

@@ -1,4 +1,6 @@
 @startuml
+allowmixing
+
 title Comunicación - Sistema de Citas
 
 object Cliente
