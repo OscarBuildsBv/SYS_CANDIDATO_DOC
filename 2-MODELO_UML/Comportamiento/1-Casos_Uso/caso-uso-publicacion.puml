@@ -1,0 +1,57 @@
+@startuml
+
+skinparam backgroundColor #1E1E1E
+skinparam packageStyle folder
+skinparam shadowing false
+skinparam actorStyle awesome
+
+skinparam package {
+    BackgroundColor #1E1E1E
+    BorderColor #D4A017
+    RoundCorner 10
+}
+
+skinparam usecase {
+    BackgroundColor #2B2B2B
+    BorderColor #D4A017
+    FontColor #F5C542
+    ArrowColor #D4A017
+}
+
+skinparam rectangle {
+    BackgroundColor #1E1E1E
+    BorderColor #D4A017
+    RoundCorner 10
+}
+
+skinparam ArrowColor #D4A017
+skinparam defaultFontColor #F5C542
+
+left to right direction
+
+actor Abogado
+
+rectangle "Sistema Web de Publicaciones" {
+
+  usecase "Iniciar Sesión" as UC1
+  usecase "Crear Publicación" as UC2
+  usecase "Escribir Texto" as UC3
+  usecase "Subir Imagen" as UC4
+  usecase "Visualizar Vista Previa" as UC5
+  usecase "Publicar Contenido" as UC6
+  usecase "Editar Publicación" as UC7
+  usecase "Eliminar Publicación" as UC8
+
+}
+
+Abogado -- UC1
+Abogado -- UC2
+Abogado -- UC7
+Abogado -- UC8
+
+UC2 .> UC3 : <<include>>
+UC2 .> UC4 : <<include>>
+UC2 .> UC5 : <<include>>
+UC2 .> UC6 : <<include>>
+
+@enduml
