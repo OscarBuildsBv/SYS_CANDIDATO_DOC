@@ -1,0 +1,110 @@
+@startuml
+title Diagrama de Perfil - Estereotipos del Sistema
+
+skinparam backgroundColor #1E1E1E
+skinparam defaultFontColor #F5C542
+skinparam ArrowColor #D4A017
+skinparam classFontColor #F5C542
+skinparam classBorderColor #D4A017
+skinparam classBackgroundColor #2B2B2B
+skinparam classHeaderBackgroundColor #1E1E1E
+
+enum TipoUsuario {
+    CLIENTE
+    ABOGADO
+    ADMINISTRADOR
+}
+
+enum EstadoCaso {
+    ABIERTO
+    EN_PROCESO
+    PENDIENTE
+    RESUELTO
+    CERRADO
+    ARCHIVADO
+}
+
+enum EstadoCita {
+    SOLICITADA
+    CONFIRMADA
+    REPROGRAMADA
+    CANCELADA
+    COMPLETADA
+}
+
+enum ModalidadCita {
+    PRESENCIAL
+    VIRTUAL
+    TELEFONICA
+}
+
+enum TipoDocumento {
+    DNI
+    CARNET_EXTRANJERIA
+    PASAPORTE
+}
+
+enum TipoNotificacion {
+    EMAIL
+    SMS
+    PUSH
+    IN_APP
+}
+
+enum TipoPublicacion {
+    ARTICULO
+    NOTICIA
+    EVENTO
+    RECURSO
+}
+
+class <<estereotipo>> EntidadBase {
+    {abstract} id: Long
+    {abstract} fechaCreacion: Date
+    {abstract} fechaActualizacion: Date
+}
+
+class <<estereotipo>> Auditable {
+    {abstract} creadoPor: String
+    {abstract} modificadoPor: String
+}
+
+class <<estereotipo>> SoftDeletable {
+    {abstract} activo: Boolean
+    {abstract} fechaEliminacion: Date
+}
+
+class <<estereotipo>> ApiResponse {
+    codigo: int
+    mensaje: String
+    datos: Object
+    errores: List<String>
+}
+
+class <<estereotipo>> PageableResponse {
+    contenido: List
+    pagina: int
+    totalElementos: long
+    totalPaginas: int
+}
+
+note "Estereotipos base\ndel sistema" as NOTE1
+note "Enumeraciones\nde dominio" as NOTE2
+
+EntidadBase <|-- Usuario
+EntidadBase <|-- Caso
+EntidadBase <|-- Cita
+EntidadBase <|-- Consulta
+EntidadBase <|-- Publicacion
+EntidadBase <|-- Documento
+EntidadBase <|-- Notificacion
+
+Auditable <|-- Usuario
+Auditable <|-- Caso
+Auditable <|-- Publicacion
+
+SoftDeletable <|-- Usuario
+SoftDeletable <|-- Caso
+SoftDeletable <|-- Publicacion
+
+@enduml
