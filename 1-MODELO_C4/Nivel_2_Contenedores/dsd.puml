@@ -1,0 +1,50 @@
+@startuml Sistema_Contenedores
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Diagrama de Contenedores - Sistema de Gestión Legal
+
+LAYOUT_WITH_LEGEND()
+
+Person(cliente, "Cliente", "Usuario registrado del sistema")
+Person(abogado, "Abogado", "Profesional legal")
+Person(admin, "Administrador", "Gestor del sistema")
+
+System_Boundary(sistema, "SYS-SISTEMA-ABOGADO") {
+    Container(webapp, "Aplicación Web", "React.js / HTML, CSS, JavaScript", "Interfaz de usuario accesible desde el navegador")
+    Container(api, "API Gateway", "Spring Boot / Java 26", "Punto de entrada único para todas las peticiones del frontend")
+    Container(auth, "Servicio de Autenticación", "Spring Security / JWT", "Gestión de identidad, tokens y control de acceso")
+    Container(citas, "Servicio de Citas", "Spring Boot", "Gestión de agenda, programación y confirmación de citas")
+    Container(consultas, "Servicio de Consultas", "Spring Boot", "Gestión de solicitudes de consulta legal")
+    Container(casos, "Servicio de Casos", "Spring Boot", "Gestión de casos legales, documentos y seguimiento")
+    Container(perfil, "Servicio de Perfil", "Spring Boot", "Gestión de datos de usuario, contraseñas y preferencias")
+    Container(publicaciones, "Servicio de Publicaciones", "Spring Boot", "Gestión de contenido, noticias y recursos educativos")
+    ContainerDb(db, "Base de Datos", "PostgreSQL", "Almacenamiento persistente de datos del sistema")
+}
+
+System_Ext(sms, "Gateway SMS", "Proveedor externo de mensajería")
+System_Ext(email, "Servicio Email", "Servidor SMTP")
+
+Rel(cliente, webapp, "Navega e interactúa con el sistema", "HTTPS")
+Rel(abogado, webapp, "Gestiona publicaciones y casos", "HTTPS")
+Rel(admin, webapp, "Administra el sistema", "HTTPS")
+
+Rel(webapp, api, "Consume APIs REST", "JSON/HTTPS")
+Rel(api, auth, "Valida credenciales", "gRPC")
+Rel(api, citas, "Gestiona citas", "gRPC")
+Rel(api, consultas, "Gestiona consultas", "gRPC")
+Rel(api, casos, "Gestiona casos", "gRPC")
+Rel(api, perfil, "Gestiona perfiles", "gRPC")
+Rel(api, publicaciones, "Gestiona publicaciones", "gRPC")
+
+Rel(auth, db, "Lee/escribe datos de autenticación", "JDBC")
+Rel(citas, db, "Persiste citas", "JDBC")
+Rel(consultas, db, "Persiste consultas", "JDBC")
+Rel(casos, db, "Persiste casos y documentos", "JDBC")
+Rel(perfil, db, "Persiste datos de perfil", "JDBC")
+Rel(publicaciones, db, "Persiste publicaciones", "JDBC")
+
+Rel(sistema, sms, "Notificaciones SMS", "API REST")
+Rel(sistema, email, "Notificaciones Email", "SMTP")
+
+SHOW_LEGEND()
+@enduml

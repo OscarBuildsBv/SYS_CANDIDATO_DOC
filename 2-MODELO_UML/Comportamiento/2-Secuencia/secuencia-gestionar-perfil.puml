@@ -1,0 +1,109 @@
+@startuml Modulo_06_Gestionar_Perfil_Secuencia
+title Sistema SYS-SISTEMA-ABOGADO\nDiagrama de Secuencia - Gestionar Perfil
+
+skinparam backgroundColor #1E1E1E
+skinparam shadowing false
+
+skinparam sequence {
+    ArrowColor #D4A017
+    LifeLineBorderColor #D4A017
+    LifeLineBackgroundColor #2B2B2B
+    ParticipantBorderColor #D4A017
+    ParticipantBackgroundColor #2B2B2B
+    ParticipantFontColor #F5C542
+    ActorBorderColor #D4A017
+    ActorBackgroundColor #1E1E1E
+    ActorFontColor #F5C542
+}
+
+skinparam defaultFontColor #F5C542
+
+actor Cliente
+actor Administrador
+
+participant "Frontend" as FE
+participant "API Gateway" as API
+participant "Perfil Service" as PS
+participant "Sistema de Autenticación" as SA
+database "Base de Datos" as DB
+
+== Visualizar perfil ==
+
+Cliente -> FE : Solicita ver su perfil
+FE -> API : GET /perfil
+API -> PS : Obtener datos del perfil
+PS -> DB : Consultar datos del usuario
+DB --> PS : Datos del perfil
+PS --> API : Perfil encontrado
+API --> FE : Información del perfil
+FE --> Cliente : Mostrar perfil
+
+== Editar datos personales ==
+
+Cliente -> FE : Modifica datos personales
+FE -> API : PUT /perfil
+API -> PS : Validar y actualizar datos
+
+PS -> SA : Validar formato de datos
+SA --> PS : Validación exitosa
+
+PS -> DB : Actualizar datos del usuario
+DB --> PS : Confirmación de actualización
+
+PS --> API : Perfil actualizado
+API --> FE : Notificación de éxito
+FE --> Cliente : Datos actualizados correctamente
+
+== Cambiar contraseña ==
+
+Cliente -> FE : Solicita cambio de contraseña
+FE -> API : POST /perfil/cambiar-password
+API -> PS : Iniciar cambio de contraseña
+
+PS -> SA : Validar contraseña actual
+SA -> DB : Consultar credenciales
+DB --> SA : Credenciales válidas
+
+SA --> PS : Contraseña actual confirmada
+
+PS -> DB : Actualizar contraseña
+DB --> PS : Contraseña actualizada
+
+PS --> API : Cambio exitoso
+API --> FE : Confirmación
+FE --> Cliente : Contraseña cambiada exitosamente
+
+== Actualizar fotografía ==
+
+Cliente -> FE : Sube nueva fotografía
+FE -> API : POST /perfil/foto
+API -> PS : Procesar y almacenar imagen
+
+PS -> DB : Guardar referencia de imagen
+DB --> PS : Confirmación
+
+PS --> API : Fotografía actualizada
+API --> FE : Mostrar nueva imagen
+FE --> Cliente : Fotografía actualizada
+
+== Administrar usuarios (Admin) ==
+
+Administrador -> FE : Accede a gestión de usuarios
+FE -> API : GET /usuarios
+API -> PS : Listar todos los usuarios
+PS -> DB : Consultar usuarios registrados
+DB --> PS : Lista de usuarios
+PS --> API : Usuarios encontrados
+API --> FE : Mostrar panel de administración
+FE --> Administrador : Lista de usuarios del sistema
+
+Administrador -> FE : Edita/Elimina un usuario
+FE -> API : PUT/DELETE /usuarios/{id}
+API -> PS : Ejecutar acción sobre usuario
+PS -> DB : Modificar estado del usuario
+DB --> PS : Confirmación
+PS --> API : Operación exitosa
+API --> FE : Notificación
+FE --> Administrador : Usuario actualizado
+
+@enduml

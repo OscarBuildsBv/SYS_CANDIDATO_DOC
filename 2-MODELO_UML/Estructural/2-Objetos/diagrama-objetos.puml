@@ -1,0 +1,82 @@
+@startuml
+title Diagrama de Objetos - Ejemplo de Instancias del Sistema
+
+skinparam backgroundColor #1E1E1E
+skinparam defaultFontColor #F5C542
+skinparam ArrowColor #D4A017
+skinparam objectFontColor #F5C542
+skinparam objectBorderColor #D4A017
+skinparam objectBackgroundColor #2B2B2B
+
+object "juan: Cliente" as Cliente {
+    id = 1001
+    nombre = "Juan Pérez"
+    email = "juan@email.com"
+    telefono = "999888777"
+    tipoDocumento = "DNI"
+    numeroDocumento = "12345678"
+}
+
+object "caso001: Caso" as Caso {
+    id = 5001
+    titulo = "Divorcio Municipal"
+    descripcion = "Proceso de divorcio"
+    estado = "En Proceso"
+    prioridad = "Alta"
+}
+
+object "cita001: Cita" as Cita {
+    id = 3001
+    fechaHora = "2024-12-15 10:00"
+    modalidad = "Presencial"
+    estado = "Confirmada"
+    motivo = "Primera consulta"
+}
+
+object "doc001: Documento" as Documento {
+    id = 7001
+    nombre = "DNI_Juan.pdf"
+    tipoArchivo = "application/pdf"
+    tamaño = 245760
+}
+
+object "maria: Abogado" as Abogado {
+    id = 2001
+    nombre = "María López"
+    email = "maria@abogados.com"
+    especialidad = "Derecho Familiar"
+    numeroColegiatura = "COL-4521"
+}
+
+object "pub001: Publicacion" as Publicacion {
+    id = 4001
+    titulo = "Nueva Ley Laboral 2024"
+    contenido = "Se aprobó la nueva ley..."
+    estado = "Publicado"
+    tipo = "Artículo"
+}
+
+object "cons001: Consulta" as Consulta {
+    id = 6001
+    descripcion = "Consulta sobre pensión"
+    areaLegal = "Derecho Familiar"
+    estado = "Respondida"
+}
+
+object "notif001: Notificacion" as Notificacion {
+    id = 8001
+    mensaje = "Su cita ha sido confirmada"
+    tipo = "EMAIL"
+    leido = false
+}
+
+Cliente --> Caso : posee
+Cliente --> Cita : solicita
+Cliente --> Consulta : realiza
+Caso --> Documento : contiene
+Abogado --> Caso : atiende
+Abogado --> Publicacion : crea
+Abogado --> Consulta : resuelve
+Cliente --> Notificacion : recibe
+
+@enduml
