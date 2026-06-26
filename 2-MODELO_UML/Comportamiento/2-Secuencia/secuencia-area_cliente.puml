@@ -1,22 +1,22 @@
 @startuml Modulo_05_Area_Cliente_Secuencia
 title Sistema SYS-SISTEMA-ABOGADO\nDiagrama de Secuencia - Área Cliente
 
-skinparam backgroundColor #1E1E1E
+skinparam backgroundColor white
 skinparam shadowing false
 
 skinparam sequence {
-    ArrowColor #D4A017
-    LifeLineBorderColor #D4A017
-    LifeLineBackgroundColor #2B2B2B
-    ParticipantBorderColor #D4A017
-    ParticipantBackgroundColor #2B2B2B
-    ParticipantFontColor #F5C542
-    ActorBorderColor #D4A017
-    ActorBackgroundColor #1E1E1E
-    ActorFontColor #F5C542
+    ArrowColor black
+    LifeLineBorderColor black
+    LifeLineBackgroundColor white
+    ParticipantBorderColor black
+    ParticipantBackgroundColor white
+    ParticipantFontColor black
+    ActorBorderColor black
+    ActorBackgroundColor white
+    ActorFontColor black
 }
 
-skinparam defaultFontColor #F5C542
+skinparam defaultFontColor black
 
 actor Cliente
 actor Administrador
@@ -25,9 +25,9 @@ participant "Portal Cliente" as PC
 participant "Sistema de Autenticación" as SA
 participant "Gestión de Casos" as GC
 participant "Gestión de Documentos" as GD
-participant "Base de Datos" as BD
+database "Base de Datos" as BD
 
-== Inicio de sesión ==
+== Inicio de Sesión ==
 
 Cliente -> PC : Ingresa usuario y contraseña
 PC -> SA : Validar credenciales
@@ -38,7 +38,7 @@ BD --> SA : Datos válidos
 SA --> PC : Acceso autorizado
 PC --> Cliente : Mostrar panel del cliente
 
-== Consulta de estado del caso ==
+== Consulta de Estado del Caso ==
 
 Cliente -> PC : Solicita estado del caso
 PC -> GC : Obtener información del caso
@@ -49,7 +49,7 @@ BD --> GC : Estado del caso
 GC --> PC : Datos del caso
 PC --> Cliente : Mostrar estado actualizado
 
-== Consulta y subida de documentos ==
+== Consulta y Carga de Documentos ==
 
 Cliente -> PC : Solicita documentos del caso
 PC -> GD : Consultar documentos
@@ -69,9 +69,9 @@ BD --> GD : Confirmación de almacenamiento
 GD --> PC : Documento cargado correctamente
 PC --> Cliente : Notificación de éxito
 
-== Comunicación con abogado ==
+== Comunicación con Abogado ==
 
-Cliente -> PC : Envía mensaje al abogado
+Cliente -> PC : Enviar mensaje al abogado
 PC -> GC : Registrar comunicación
 
 GC -> BD : Guardar mensaje
@@ -80,9 +80,9 @@ BD --> GC : Confirmación
 GC --> PC : Mensaje enviado
 PC --> Cliente : Confirmación de envío
 
-== Gestión administrativa ==
+== Gestión Administrativa ==
 
-Administrador -> PC : Accede al panel administrativo
+Administrador -> PC : Acceder al panel administrativo
 PC -> GC : Solicitar información de clientes
 
 GC -> BD : Consultar casos registrados

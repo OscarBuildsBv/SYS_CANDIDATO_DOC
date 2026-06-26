@@ -1,56 +1,61 @@
 @startuml
+title Sistema SYS-SISTEMA-ABOGADO\nDiagrama de Secuencia - Gestión de Publicaciones
 
-skinparam backgroundColor #1E1E1E
-skinparam packageStyle folder
+skinparam backgroundColor white
 skinparam shadowing false
-skinparam actorStyle awesome
 
 skinparam sequence {
-    ArrowColor #D4A017
-    LifeLineBorderColor #D4A017
-    LifeLineBackgroundColor #2B2B2B
-    ParticipantBorderColor #D4A017
-    ParticipantBackgroundColor #2B2B2B
-    ParticipantFontColor #F5C542
-    ActorBorderColor #D4A017
-    ActorBackgroundColor #2B2B2B
-    ActorFontColor #F5C542
+    ArrowColor black
+    LifeLineBorderColor black
+    LifeLineBackgroundColor white
+    ParticipantBorderColor black
+    ParticipantBackgroundColor white
+    ParticipantFontColor black
+    ActorBorderColor black
+    ActorBackgroundColor white
+    ActorFontColor black
 }
 
-skinparam ArrowColor #D4A017
-skinparam defaultFontColor #F5C542
+skinparam defaultFontColor black
 
 actor Abogado
+
 participant Frontend
 participant "API Gateway" as API
-participant "Publicaciones Service" as Publicaciones
-database "DB Publicaciones" as DB
+participant "Servicio de Publicaciones" as Publicaciones
+database "Base de Datos" as BD
+
+== Creación de publicación ==
 
 Abogado -> Frontend : Crear publicación
-Frontend -> API : POST /publicaciones
-API -> Publicaciones : Registrar publicación
+Frontend -> API : Solicitar registro
 
-Abogado -> Frontend : Escribir texto
-Abogado -> Frontend : Subir imagen
+API -> Publicaciones : Iniciar publicación
 
-Frontend -> API : Enviar texto e imagen
+Abogado -> Frontend : Ingresa texto e imagen
+
+Frontend -> API : Enviar contenido
 API -> Publicaciones : Procesar contenido
 
-Publicaciones -> DB : Guardar publicación
-DB --> Publicaciones : OK
+Publicaciones -> BD : Guardar borrador
+BD --> Publicaciones : Confirmación
 
-Publicaciones --> API : Publicación registrada
+Publicaciones --> API : Vista previa generada
 API --> Frontend : Mostrar vista previa
 
+== Publicación de contenido ==
+
 Abogado -> Frontend : Confirmar publicación
+
 Frontend -> API : Publicar contenido
+API -> Publicaciones : Activar publicación
 
-API -> Publicaciones : Actualizar estado
-Publicaciones -> DB : Publicación activa
-DB --> Publicaciones : OK
+Publicaciones -> BD : Actualizar estado
+BD --> Publicaciones : Confirmación
 
-Publicaciones --> API : Publicación publicada
-API --> Frontend : Mostrar confirmación
+Publicaciones --> API : Publicación activa
+API --> Frontend : Mostrar resultado
+
 Frontend --> Abogado : Publicación exitosa
 
 @enduml
