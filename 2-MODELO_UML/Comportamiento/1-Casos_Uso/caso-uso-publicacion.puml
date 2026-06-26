@@ -18,10 +18,9 @@ skinparam usecase {
     ArrowColor #D4A017
 }
 
-skinparam rectangle {
-    BackgroundColor #1E1E1E
+skinparam actor {
+    FontColor #F5C542
     BorderColor #D4A017
-    RoundCorner 10
 }
 
 skinparam ArrowColor #D4A017
@@ -30,28 +29,38 @@ skinparam defaultFontColor #F5C542
 left to right direction
 
 actor Abogado
+actor Administrador
 
-rectangle "Sistema Web de Publicaciones" {
+package "Sistema Web de Publicaciones" {
 
-  usecase "Iniciar Sesión" as UC1
-  usecase "Crear Publicación" as UC2
-  usecase "Escribir Texto" as UC3
-  usecase "Subir Imagen" as UC4
-  usecase "Visualizar Vista Previa" as UC5
-  usecase "Publicar Contenido" as UC6
-  usecase "Editar Publicación" as UC7
-  usecase "Eliminar Publicación" as UC8
+  (Iniciar sesión) as UC1
+  (Crear publicación) as UC2
+  (Escribir texto) as UC3
+  (Subir imagen) as UC4
+  (Visualizar vista previa) as UC5
+  (Publicar contenido) as UC6
+  (Editar publicación) as UC7
+  (Eliminar publicación) as UC8
 
 }
 
-Abogado -- UC1
-Abogado -- UC2
-Abogado -- UC7
-Abogado -- UC8
+Abogado --> UC1
+Abogado --> UC2
+Abogado --> UC7
+
+Administrador --> UC8
 
 UC2 .> UC3 : <<include>>
 UC2 .> UC4 : <<include>>
 UC2 .> UC5 : <<include>>
 UC2 .> UC6 : <<include>>
+
+legend right
+  |<#D4A017> Actores |
+  |<#F5C542> Funcionalidades |
+  |Abogado| Crear y gestionar publicaciones |
+  |Administrador| Eliminar publicaciones |
+  |UC2| Incluye texto, imagen, vista previa y publicación |
+endlegend
 
 @enduml

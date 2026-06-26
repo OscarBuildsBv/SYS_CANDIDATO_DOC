@@ -1,62 +1,73 @@
 @startuml
+title Sistema SYS-SISTEMA-ABOGADO\nDiagrama de Secuencia - Solicitud y Gestión de Citas
 
-skinparam backgroundColor #1E1E1E
+skinparam backgroundColor white
 skinparam shadowing false
+
 skinparam sequence {
-    ArrowColor #D4A017
-    LifeLineBorderColor #D4A017
-    LifeLineBackgroundColor #2B2B2B
-    ParticipantBorderColor #D4A017
-    ParticipantBackgroundColor #2B2B2B
-    ParticipantFontColor #F5C542
-    ActorBorderColor #D4A017
-    ActorFontColor #F5C542
-    ActorBackgroundColor #1E1E1E
+    ArrowColor black
+    LifeLineBorderColor black
+    LifeLineBackgroundColor white
+    ParticipantBorderColor black
+    ParticipantBackgroundColor white
+    ParticipantFontColor black
+    ActorBorderColor black
+    ActorBackgroundColor white
+    ActorFontColor black
 }
 
-skinparam defaultFontColor #F5C542
+skinparam defaultFontColor black
 
 actor Visitante
+actor Administrador
+
 participant "Sistema Web" as SW
 participant "Módulo de Citas" as MC
 participant "Base de Datos" as BD
-participant "Administrador" as Admin
 
-== Solicitud de cita legal ==
+== Solicitud de cita ==
 
-Visitante -> SW : Accede al sitio web
-SW -> Visitante : Muestra información de servicios
+Visitante -> SW : Accede al portal
 
-Visitante -> SW : Selecciona "Solicitar cita"
-SW -> Visitante : Muestra formulario de cita
+SW --> Visitante : Mostrar servicios
 
-Visitante -> SW : Ingresa datos y envía solicitud
-SW -> MC : Validar datos de la cita
+Visitante -> SW : Solicitar cita
 
-MC -> BD : Guardar solicitud
-BD --> MC : Confirmación de registro
+SW --> Visitante : Mostrar formulario
 
-MC --> SW : Cita registrada correctamente
-SW --> Visitante : Mostrar mensaje de confirmación
+Visitante -> SW : Enviar datos
 
-== Gestión de citas ==
+SW -> MC : Validar solicitud
 
-Admin -> SW : Accede al panel administrativo
-SW -> MC : Solicitar listado de citas
+MC -> BD : Registrar cita
+BD --> MC : Confirmación
 
-MC -> BD : Consultar citas registradas
+MC --> SW : Cita registrada
+
+SW --> Visitante : Mostrar confirmación
+
+== Gestión administrativa ==
+
+Administrador -> SW : Acceder al panel
+
+SW -> MC : Solicitar citas
+
+MC -> BD : Consultar registros
 BD --> MC : Lista de citas
 
-MC --> SW : Mostrar citas
-SW --> Admin : Panel de gestión actualizado
+MC --> SW : Mostrar información
 
-Admin -> SW : Aprobar/Reprogramar cita
-SW -> MC : Actualizar estado de cita
+SW --> Administrador : Panel actualizado
+
+Administrador -> SW : Aprobar o reprogramar cita
+
+SW -> MC : Actualizar estado
 
 MC -> BD : Guardar cambios
 BD --> MC : Confirmación
 
 MC --> SW : Estado actualizado
-SW --> Admin : Notificación de éxito
+
+SW --> Administrador : Notificación de éxito
 
 @enduml

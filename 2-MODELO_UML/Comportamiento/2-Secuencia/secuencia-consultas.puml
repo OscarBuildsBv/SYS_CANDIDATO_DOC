@@ -1,39 +1,43 @@
 @startuml
+title Sistema SYS-SISTEMA-ABOGADO\nDiagrama de Secuencia - Registro de Consultas
 
-skinparam backgroundColor #1E1E1E
-skinparam packageStyle folder
+skinparam backgroundColor white
 skinparam shadowing false
-skinparam actorStyle awesome
 
-skinparam package {
-    BackgroundColor #1E1E1E
-    BorderColor #D4A017
-    RoundCorner 10
+skinparam sequence {
+    ArrowColor black
+    LifeLineBorderColor black
+    LifeLineBackgroundColor white
+    ParticipantBorderColor black
+    ParticipantBackgroundColor white
+    ParticipantFontColor black
+    ActorBorderColor black
+    ActorBackgroundColor white
+    ActorFontColor black
 }
 
-skinparam usecase {
-    BackgroundColor #2B2B2B
-    BorderColor #D4A017
-    FontColor #F5C542
-    ArrowColor #D4A017
-}
-
-skinparam ArrowColor #D4A017
-skinparam defaultFontColor #F5C542
+skinparam defaultFontColor black
 
 actor Usuario
+
 participant Frontend
 participant "API Gateway" as API
-participant "Consultas Service" as Consultas
-database "DB Consultas" as DB
+participant "Servicio de Consultas" as Consultas
+database "Base de Datos" as BD
 
-Usuario -> Frontend : Llena formulario
-Frontend -> API : POST /consultas
+== Registro de consulta ==
+
+Usuario -> Frontend : Completa formulario
+Frontend -> API : Enviar consulta
+
 API -> Consultas : Registrar consulta
-Consultas -> DB : Guardar consulta
-DB --> Consultas : OK
+
+Consultas -> BD : Guardar información
+BD --> Consultas : Confirmación
+
 Consultas --> API : Consulta registrada
 API --> Frontend : Respuesta exitosa
-Frontend --> Usuario : Confirmación
+
+Frontend --> Usuario : Mostrar confirmación
 
 @enduml
