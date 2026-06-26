@@ -1,0 +1,50 @@
+@startuml Sistema_Componentes
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title Diagrama de Componentes - API Gateway
+
+LAYOUT_WITH_LEGEND()
+
+Person(cliente, "Cliente", "Usuario registrado")
+
+System_Boundary(gateway, "API Gateway") {
+    Component(discovery, "Service Discovery", "Eureka / Netflix", "Registro y descubrimiento de servicios")
+    Component(gateway_service, "API Gateway Service", "Spring Cloud Gateway", "Enrutamiento, filtros y balanceo de carga")
+    Component(auth_filter, "Authentication Filter", "Spring Security", "Filtro de autenticación y autorización JWT")
+    Component(rate_limiter, "Rate Limiter", "Resilience4j", "Control de tasa de peticiones")
+    Component(circuit_breaker, "Circuit Breaker", "Resilience4j", "Protección contra fallos en cascada")
+}
+
+System_Boundary(microservices, "Microservicios Internos") {
+    Component(auth_svc, "Auth Service", "Spring Boot", "Login, registro, validación JWT")
+    Component(citas_svc, "Citas Service", "Spring Boot", "CRUD de citas, disponibilidad")
+    Component(consultas_svc, "Consultas Service", "Spring Boot", "Gestión de consultas legales")
+    Component(casos_svc, "Casos Service", "Spring Boot", "Gestión de casos y documentos")
+    Component(perfil_svc, "Perfil Service", "Spring Boot", "Gestión de perfiles de usuario")
+    Component(pub_svc, "Publicaciones Service", "Spring Boot", "Gestión de contenido y noticias")
+}
+
+ContainerDb(db, "Base de Datos", "PostgreSQL", "Almacenamiento centralizado")
+
+Rel(cliente, gateway_service, "Peticiones HTTP", "HTTPS")
+Rel(gateway_service, auth_filter, "Autenticar petición", "Interno")
+Rel(auth_filter, rate_limiter, "Verificar límites", "Interno")
+Rel(rate_limiter, circuit_breaker, "Proteger servicios", "Interno")
+Rel(circuit_breaker, discovery, "Descubrir servicio destino", "Interno")
+
+Rel(gateway_service, auth_svc, "Rutas de autenticación", "gRPC")
+Rel(gateway_service, citas_svc, "Rutas de citas", "gRPC")
+Rel(gateway_service, consultas_svc, "Rutas de consultas", "gRPC")
+Rel(gateway_service, casos_svc, "Rutas de casos", "gRPC")
+Rel(gateway_service, perfil_svc, "Rutas de perfil", "gRPC")
+Rel(gateway_service, pub_svc, "Rutas de publicaciones", "gRPC")
+
+Rel(auth_svc, db, "Persistencia", "JDBC")
+Rel(citas_svc, db, "Persistencia", "JDBC")
+Rel(consultas_svc, db, "Persistencia", "JDBC")
+Rel(casos_svc, db, "Persistencia", "JDBC")
+Rel(perfil_svc, db, "Persistencia", "JDBC")
+Rel(pub_svc, db, "Persistencia", "JDBC")
+
+SHOW_LEGEND()
+@enduml

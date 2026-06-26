@@ -1,0 +1,29 @@
+@startuml Sistema_Contexto
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+title Diagrama de Contexto - Sistema de Gestión Legal
+
+LAYOUT_WITH_LEGEND()
+
+Person(cliente, "Cliente", "Usuario del sistema que solicita servicios legales y gestiona sus casos")
+Person(abogado, "Abogado", "Profesional legal que atiende casos y publica contenido")
+Person(admin, "Administrador", "Encargado de gestionar usuarios, citas y contenido del sistema")
+Person(visitante, "Visitante", "Usuario no registrado que consulta información pública")
+
+System_Boundary(sistema, "SYS-SISTEMA-ABOGADO") {
+    System(sys, "Sistema de Gestión Legal", "Plataforma integral para la gestión de servicios legales, citas, consultas y comunicaciones")
+}
+
+System_Ext(sms, "Servicio SMS", "Gateway de mensajería para notificaciones")
+System_Ext(email, "Servicio Email", "Servicio de correo electrónico para comunicaciones")
+
+Rel(cliente, sys, "Accede a área cliente, agenda citas, consulta casos, sube documentos")
+Rel(abogado, sys, "Gestiona publicaciones, atiende consultas, actualiza casos")
+Rel(admin, sys, "Administra usuarios, gestiona contenido, configura el sistema")
+Rel(visitante, sys, "Consulta información pública y servicios legales")
+
+Rel(sys, sms, "Envía notificaciones SMS", "API REST")
+Rel(sys, email, "Envía notificaciones por correo", "SMTP")
+
+SHOW_LEGEND()
+@enduml

@@ -1,0 +1,47 @@
+@startuml
+title Tiempo - Gestionar Perfil
+
+robust "Cliente" as C
+robust "Sistema" as S
+robust "Base de Datos" as DB
+
+@0
+C is NoAutenticado
+S is Esperando
+
+@5
+C is IniciandoSesion
+S is ValidandoCredenciales
+
+@10
+C is Autenticado
+
+@15
+C is VisualizandoPerfil
+
+@20
+C is EditandoDatosPersonales
+S is ValidandoInformacion
+
+@25
+DB is ActualizandoRegistro
+
+@30
+C is Confirmado
+
+@35
+C is CambiandoPassword
+S is VerificandoPasswordActual
+
+@40
+DB is ActualizandoPassword
+
+@45
+C is ActualizandoFotografia
+S is ProcesandoImagen
+
+@50
+C is SesionFinalizada
+S is CerrandoSesion
+
+@enduml
